@@ -1,0 +1,38 @@
+<head>
+    {% load static%}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <!-- <link> 태그의 rel 속성은 현재 문서와 외부 리소스 사이의 연관 관계를 명시합니다. -->
+    <!-- 스타일 시트(stylesheet)로 사용할 외부 리소스를 불러옴. -->
+</head>
+
+<body>
+    <div class = "header">
+        <h1>{{author}}님이 작성한 Post들 입니다</h1>
+    </div>
+    <div>
+        <a href = "{% url 'home' %}">뒤로가기</a>
+    </div>
+<div class = "list">
+    {% if post_list %}
+    {% for post in post_list %}
+    <div class = "post">
+        <div class = "post_container">
+            <div class = "post_header">
+                <h2>{{post.pk}}번째 포스트 입니다</h2>
+                <p>작성자 : {{post.name}}<p>    
+            </div>
+            <div class = "post_center">
+                <p>제목 : {{post.title}}</p>
+                <p>내용 : {{post.content}}</p>
+            </div>
+            <div class = "post_bottom">
+                <p>작성시각 : {{post.create_data}}</p>
+            </div>
+        </div>
+    </div>
+        {% endfor %}
+    {% else %}
+        <h2>작성된 Post가 없습니다</h2>
+    {% endif %}
+</div>
+</body>

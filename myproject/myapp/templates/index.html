@@ -1,0 +1,23 @@
+<head>
+    {% load static%}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <!-- <link> 태그의 rel 속성은 현재 문서와 외부 리소스 사이의 연관 관계를 명시합니다. -->
+    <!-- 스타일 시트(stylesheet)로 사용할 외부 리소스를 불러옴. -->
+</head>
+
+<body>
+<div class = "header">
+    <a href = "{% url 'home' %}"><h1>아주대 멋쟁이사자처럼 8기</h1></a>
+</div>
+
+<div class = "list">
+    <div class = "tag">
+        <div>
+            <a href = "/lions">아기사자 리스트</a>
+        </div>
+        <div>
+            <a href = "/post">전체 POST</a>
+        </div>
+    </div>
+</div>
+</body>

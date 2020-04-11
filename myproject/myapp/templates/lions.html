@@ -1,0 +1,26 @@
+
+<head>
+    {% load static%}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <!-- <link> 태그의 rel 속성은 현재 문서와 외부 리소스 사이의 연관 관계를 명시합니다. -->
+    <!-- 스타일 시트(stylesheet)로 사용할 외부 리소스를 불러옴. -->
+</head>
+
+<body>
+    <div class = "header">
+        <h1>여기에 아기사자들 가져와</h1>
+    </div>
+    <div>
+        <a href = "{% url 'home' %}">뒤로가기</a>
+    </div>
+    {% for lion in lion_list %}
+        <div class = "lion">
+            <h1><a href="{% url 'lion_posts' pk=lion.pk %}">{{ lion.name }}</a></h1>
+            <p>가입 날짜 : {{ lion.create_data }}</p>
+        </div>
+    {% endfor %}
+
+<div class = "list">
+
+</div>
+</body>
