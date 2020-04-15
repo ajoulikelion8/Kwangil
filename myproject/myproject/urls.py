@@ -22,5 +22,6 @@ urlpatterns = [
     path('', myapp.views.index, name = 'home'),
     path('lions/', myapp.views.lion_list, name = 'lions'),
     path('lions/<int:pk>', myapp.views.post_list, name = 'lion_posts'),
+    path('new_post/<int:pk>', myapp.views.new_post, name = "new_post"),
     path('post/', include('post.urls'))
 ]

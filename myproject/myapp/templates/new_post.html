@@ -7,18 +7,13 @@
 
 <body>
 <div class = "header">
-    <a href = "{% url 'home' %}"><h1>아주대 멋쟁이사자처럼 8기</h1></a>
+    <h1>{{author}}님 새로운 POST를 작성하세요</h1>
 </div>
+<a href = "{% url 'lion_posts' pk %}">뒤로가기</a>
 
-<div class = "list">
-    <div class = "tag">
-        <div>
-            <a href = "/lions">아기사자 리스트</a>
-        </div>
-        <div>
-            <a href = "/post">전체 POST</a>
-        </div>
-    </div>
-</div>
-
-</body>
+<form method='POST'>
+    {% csrf_token %}
+        {{form.as_p}}
+    <br>
+    <input type="submit" value="제출하기">
+</form>
