@@ -1,3 +1,4 @@
+
 <head>
     {% load static%}
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
@@ -6,16 +7,16 @@
 </head>
 
 <body>
-<div class = "header">
-    <h1>{{author}}님 새로운 POST를 작성하세요</h1>
-</div>
-<a href = "{% url 'lion_posts' lion_pk %}">뒤로가기</a>
+    <div class = "header">
+        <h1>여기에 아기사자들 가져와</h1>
+    </div>
+    <div>
+        <a href = "{% url 'home' %}">뒤로가기</a>
+    </div>
+    {% block content %}
+    {% endblock %}
 
-<form method='POST'>
-    {% csrf_token %}
-        <div>
-            {{form.as_p}}
-        </div>
-    <br>
-    <input type="submit" value="제출하기">
-</form>
+<div class = "list">
+
+</div>
+</body>

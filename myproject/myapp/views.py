@@ -16,37 +16,37 @@ def lion_list(request):
 
 def post_list(request, pk):
     
-    pk = pk
+    post_pk = pk
     author = Lion.objects.get(pk = pk)
+    lion_pk = author.pk
+
     post_list = Post.objects.all().filter(name = author)
     
     return render(request, 'lion_posts.html', {
         'post_list' : post_list,
         'author' : author,
-        'pk' : pk,
+        'post_pk' : post_pk,
+        'lion_pk' : lion_pk,
         })
 
 def new_post(request, pk):
     
-    author = Lion.objects.get(pk = pk)
-    pk = pk
+    lion_pk = pk
+    author = Lion.objects.get(pk = lion_pk)
 
     if request.method == 'POST':    # POST 요청이면 form에 request된 값 저장
-        form = PostForm(request.POST)
+        post = Post.objects.create(name = author)
+        form = PostForm(request.POST, instance = post)
 
         if form.is_valid():
-            post = form.save(commit=False)  #commit=False란 넘겨진 데이터를 바로 Post 모델에 저장하지는 말라는 뜻
-            post.title = request.title
-            post.content = request.content
             post.save()
 
-            return redirect('lion_posts', pk = pk)     
+            return redirect('lion_posts', pk = lion_pk)     
     else:                           # GET 요청이면 그냥 form 보여줘
         form = PostForm()
 
     return render(request, 'new_post.html', {
         'form' : form,
         'author' : author,
-        'pk' : pk,
-        # 'post' : post,
+        'lion_pk' :lion_pk,
         })

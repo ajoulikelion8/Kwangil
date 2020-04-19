@@ -11,8 +11,11 @@
     </div>
     <div>
         <a href = "{% url 'lions' %}">뒤로가기</a>
-        <a href = "{% url 'new_post' pk %}">새 Post 작성</a>
     </div>
+    <div>
+        <a href = "{% url 'new_post' lion_pk %}">새 Post 작성</a>
+    </div>
+
 <div class = "list">
     {% if post_list %}
     {% for post in post_list %}
